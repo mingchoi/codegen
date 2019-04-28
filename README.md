@@ -4,7 +4,7 @@ This tool built for generating code template via CLI.
 
 ### Build & Run
 
-go build && ./codegen
+`go build && ./codegen`
 
 ### Setup Config
 
