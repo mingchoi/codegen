@@ -1,0 +1,14 @@
+[[tasks]]
+name = "First Template"
+
+[tasks.fields]
+    [tasks.fields.ClassName]
+    type = "StringInput"
+    message = "Class Name"
+    [tasks.fields.MyVariable]
+    type = "String"
+    value = "MY_VARIABLE"
+
+[[tasks.files]]
+templatepath = "test/template/template.java"
+exportpath = "test/output/out.java"
