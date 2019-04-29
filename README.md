@@ -62,3 +62,26 @@ public class {{.Print "ClassName"}} {
 | Camel    | Turn value to camel case             | {{.Camel "MyField"}}                      | convertedInput   |
 | Constant | Turn value to constant case          | {{.Constant "MyField"}}                   | CONVERTED_INPUT  |
 | Dash     | Turn value to dash case              | {{.Dash "MyField"}}                       | converted-input  |
+
+# Roadmap
+
+### 28/4/2019
+
+- [x] Basic template generation
+- [x] CLI menu & prompt
+- [x] Template config format
+- [x] Print variable to template
+- [x] String conversion for template
+      (Title, Constant, Camel, Dash)
+- [x] If case for template (Value compare)
+
+### 29/4/2019
+
+- [x] Global variable
+
+### TBC
+
+- [ ] More String conversion for template
+      (package, file/path, under_line)
+- [ ] Windows CLI word missing bug
+- [ ] Windows <? -> &lt;? bug
