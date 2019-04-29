@@ -88,6 +88,9 @@ func promptTaskFields(task Task, input *os.File) Task {
 	}
 	sort.Strings(keys)
 
+	// Print Task Title
+	fmt.Printf("\nSelected %s\n", task.Name)
+
 	// Prompt for fields
 	for _, k := range keys {
 		v := task.Fields[k]
