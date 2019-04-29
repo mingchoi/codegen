@@ -64,6 +64,15 @@ func promptSelectTask(conf Config) string {
 func findTaskByName(conf Config, name string) (Task, error) {
 	for _, v := range conf.Tasks {
 		if v.Name == name {
+			// Inject global variable
+			unionField := make(map[string]Field)
+			for k, v := range conf.Fields {
+				unionField[k] = v
+			}
+			for k, v := range v.Fields {
+				unionField[k] = v
+			}
+			v.Fields = unionField
 			return v, nil
 		}
 	}

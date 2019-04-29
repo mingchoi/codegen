@@ -31,6 +31,12 @@ func TestLoadConfig(t *testing.T) {
 				},
 			},
 		},
+		Fields: map[string]Field{
+			"PackageName": Field{
+				Type:  "String",
+				Value: "com.example.project",
+			},
+		},
 	}
 
 	// Start Test
@@ -48,11 +54,43 @@ func TestFindTaskByName(t *testing.T) {
 		Tasks: []Task{
 			Task{Name: "First Task"},
 			Task{Name: "Second Task"},
-			Task{Name: "Third Task"},
+			Task{Name: "Third Task", Fields: map[string]Field{
+				"TaskField": Field{
+					Type:  "String",
+					Value: "abc",
+				},
+				"ReplaceField": Field{
+					Type:  "String",
+					Value: "mno",
+				},
+			}},
 			Task{Name: "Fourth Task"},
 		},
+		Fields: map[string]Field{
+			"GlobalField": Field{
+				Type:  "String",
+				Value: "efg",
+			},
+			"ReplaceField": Field{
+				Type:  "String",
+				Value: "hij",
+			},
+		},
 	}
-	expected := Task{Name: "Third Task"}
+	expected := Task{Name: "Third Task", Fields: map[string]Field{
+		"GlobalField": Field{
+			Type:  "String",
+			Value: "efg",
+		},
+		"TaskField": Field{
+			Type:  "String",
+			Value: "abc",
+		},
+		"ReplaceField": Field{
+			Type:  "String",
+			Value: "mno",
+		},
+	}}
 
 	// Start Test
 	task, err := findTaskByName(conf, "Third Task")

@@ -1,3 +1,10 @@
+# Global variable
+[fields]
+    [fields.PackageName]
+    type = "String"
+    value = "com.example.project"
+
+# Task List
 [[tasks]]
 name = "First Template"
 

@@ -3,7 +3,8 @@ package main
 import "strings"
 
 type Config struct {
-	Tasks []Task
+	Tasks  []Task
+	Fields map[string]Field
 }
 
 type Task struct {
