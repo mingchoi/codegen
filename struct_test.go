@@ -19,9 +19,14 @@ func TestRenderContextCase(t *testing.T) {
 
 	cases := []RenderContextCaseTestCase{
 		RenderContextCaseTestCase{
-			Title:    "Camel",
-			Expected: "myExampleWord",
-			Actual:   ctx.Camel("Test"),
+			Title:    "Constant",
+			Expected: "MY_EXAMPLE_WORD",
+			Actual:   ctx.Constant("Test"),
+		},
+		RenderContextCaseTestCase{
+			Title:    "Underline",
+			Expected: "my_example_word",
+			Actual:   ctx.Underline("Test"),
 		},
 		RenderContextCaseTestCase{
 			Title:    "Title",
@@ -29,14 +34,24 @@ func TestRenderContextCase(t *testing.T) {
 			Actual:   ctx.Title("Test"),
 		},
 		RenderContextCaseTestCase{
+			Title:    "Camel",
+			Expected: "myExampleWord",
+			Actual:   ctx.Camel("Test"),
+		},
+		RenderContextCaseTestCase{
 			Title:    "Dash",
 			Expected: "my-example-word",
 			Actual:   ctx.Dash("Test"),
 		},
 		RenderContextCaseTestCase{
-			Title:    "Constant",
-			Expected: "MY_EXAMPLE_WORD",
-			Actual:   ctx.Constant("Test"),
+			Title:    "Path",
+			Expected: "my/example/word",
+			Actual:   ctx.Path("Test"),
+		},
+		RenderContextCaseTestCase{
+			Title:    "Underline",
+			Expected: "my.example.word",
+			Actual:   ctx.Package("Test"),
 		},
 	}
 

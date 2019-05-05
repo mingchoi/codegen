@@ -54,14 +54,17 @@ public class {{.Print "ClassName"}} {
 
 ### Function availiable in template
 
-| Name     | Description                          | Example                                   | Output           |
-| -------- | ------------------------------------ | ----------------------------------------- | ---------------- |
-| Print    | Print field value                    | {{.Print "MyField"}}                      | your exact input |
-| Equal    | Check if field value equal to string | {{if .Equal "MyField" "foo"}} bar {{end}} | bar              |
-| Title    | Turn value to title case             | {{.Title "MyField"}}                      | ConvertedInput   |
-| Camel    | Turn value to camel case             | {{.Camel "MyField"}}                      | convertedInput   |
-| Constant | Turn value to constant case          | {{.Constant "MyField"}}                   | CONVERTED_INPUT  |
-| Dash     | Turn value to dash case              | {{.Dash "MyField"}}                       | converted-input  |
+| Name      | Description                          | Example                                   | Output           |
+| --------- | ------------------------------------ | ----------------------------------------- | ---------------- |
+| Print     | Print field value                    | {{.Print "MyField"}}                      | your exact input |
+| Equal     | Check if field value equal to string | {{if .Equal "MyField" "foo"}} bar {{end}} | bar              |
+| Title     | Turn value to title case             | {{.Title "MyField"}}                      | ConvertedInput   |
+| Camel     | Turn value to camel case             | {{.Camel "MyField"}}                      | convertedInput   |
+| Constant  | Turn value to constant case          | {{.Constant "MyField"}}                   | CONVERTED_INPUT  |
+| Underline | Turn value to underline case         | {{.Underline "MyField"}}                  | converted_input  |
+| Dash      | Turn value to dash case              | {{.Dash "MyField"}}                       | converted-input  |
+| Path      | Turn value to path case              | {{.Path "MyField"}}                       | converted/input  |
+| Package   | Turn value to package case           | {{.Package "MyField"}}                    | converted.input  |
 
 # Roadmap
 
@@ -79,9 +82,12 @@ public class {{.Print "ClassName"}} {
 
 - [x] Global variable
 
+### 5/5/2019
+
+- [x] More String conversion for template
+      (package, file/path, under_line)
+
 ### TBC
 
-- [ ] More String conversion for template
-      (package, file/path, under_line)
 - [ ] Windows CLI word missing bug
 - [ ] Windows <? -> &lt;? bug

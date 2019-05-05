@@ -1,7 +1,5 @@
 package main
 
-import "strings"
-
 type Config struct {
 	Tasks  []Task
 	Fields map[string]Field
@@ -52,9 +50,15 @@ func (ctx *RenderContext) Constant(name string) string {
 	if !ok {
 		return "ERROR_VARIABLE_NOT_FOUND"
 	}
-	result := strings.ToUpper(field.Value)
-	result = strings.Replace(result, " ", "_", -1)
-	return result
+	return ToConstantCase(field.Value)
+}
+
+func (ctx *RenderContext) Underline(name string) string {
+	field, ok := ctx.Fields[name]
+	if !ok {
+		return "error_variable_not_found"
+	}
+	return ToUnderlineCase(field.Value)
 }
 
 func (ctx *RenderContext) Title(name string) string {
@@ -62,10 +66,7 @@ func (ctx *RenderContext) Title(name string) string {
 	if !ok {
 		return "ErrorVariableNotFound"
 	}
-	str := strings.Title(field.Value)
-	strs := strings.Split(str, " ")
-	result := strings.Join(strs, "")
-	return result
+	return ToTitleCase(field.Value)
 }
 
 func (ctx *RenderContext) Camel(name string) string {
@@ -73,10 +74,7 @@ func (ctx *RenderContext) Camel(name string) string {
 	if !ok {
 		return "errorVariableNotFound"
 	}
-	str := strings.Title(field.Value)
-	strs := strings.Split(str, " ")
-	result := strings.Join(strs, "")
-	return strings.ToLower(result[0:1]) + result[1:]
+	return ToCamelCase(field.Value)
 }
 
 func (ctx *RenderContext) Dash(name string) string {
@@ -84,8 +82,21 @@ func (ctx *RenderContext) Dash(name string) string {
 	if !ok {
 		return "error-variable-not-found"
 	}
-	str := strings.ToLower(field.Value)
-	strs := strings.Split(str, " ")
-	result := strings.Join(strs, "-")
-	return result
+	return ToDashCase(field.Value)
+}
+
+func (ctx *RenderContext) Path(name string) string {
+	field, ok := ctx.Fields[name]
+	if !ok {
+		return "error/variable/not/found"
+	}
+	return ToPathCase(field.Value)
+}
+
+func (ctx *RenderContext) Package(name string) string {
+	field, ok := ctx.Fields[name]
+	if !ok {
+		return "error.variable.not.found"
+	}
+	return ToPackageCase(field.Value)
 }
